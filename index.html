@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Software Lab — Estado de Requerimientos · Thor Training App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:      #0B2545;
+    --navy-2:    #123566;
+    --blue:      #2E86C1;
+    --blue-light:#EAF3FB;
+    --white:     #FFFFFF;
+    --offwhite:  #F4F6F8;
+    --ink:       #14213D;
+    --ink-soft:  #4A5568;
+    --green:     #1F8A70;
+    --green-bg:  #E9F7F3;
+    --amber:     #B7791F;
+    --amber-bg:  #FCF3E3;
+    --red:       #C0392B;
+    --red-bg:    #FBEAE8;
+    --line:      #E2E8F0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--offwhite); color:var(--ink);
+    font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:'Archivo', sans-serif;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{background:linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%); color:var(--white); padding:52px 0 44px;}
+  .brand{display:flex; align-items:center; gap:14px; margin-bottom:38px;}
+  .logo{
+    width:52px; height:52px; border-radius:10px; background:rgba(255,255,255,0.08);
+    border:1.5px solid rgba(255,255,255,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; letter-spacing:0.5px;
+    color:var(--white); flex-shrink:0;
+  }
+  .brand-text .name{font-family:'Archivo',sans-serif; font-weight:800; font-size:16px; letter-spacing:1.5px;}
+  .brand-text .tag{font-size:11.5px; color:#AFC6E3; letter-spacing:0.3px; margin-top:1px;}
+
+  h1{font-size:clamp(28px,5vw,40px); font-weight:800; margin:0 0 8px; letter-spacing:-0.5px;}
+  .subline{font-size:13px; color:#AFC6E3; letter-spacing:0.2px; margin-bottom:34px;}
+
+  .progress-block{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:10px; padding:20px 22px;}
+  .progress-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+  .progress-top .pct{font-family:'Archivo',sans-serif; font-weight:800; font-size:22px; color:var(--white);}
+  .progress-top .lbl{font-size:12px; color:#AFC6E3;}
+  .bar-track{height:10px; border-radius:6px; background:rgba(255,255,255,0.12); overflow:hidden;}
+  .bar-fill{height:100%; width:0%; background:linear-gradient(90deg,#2E86C1,#5FA8DA); border-radius:6px; animation:fill 1.1s 0.2s ease forwards;}
+  @keyframes fill{ to{ width:78%; } }
+  .legend{display:flex; gap:22px; margin-top:14px; flex-wrap:wrap;}
+  .legend .item{font-size:12px; color:#D7E4F3; display:flex; align-items:center; gap:7px;}
+  .dot{width:8px; height:8px; border-radius:50%; flex-shrink:0;}
+  .dot.g{background:var(--green);} .dot.a{background:var(--blue);} .dot.r{background:#E88072;}
+
+  /* ---------- SECTIONS ---------- */
+  main{padding:44px 0 90px;}
+  section{margin-bottom:52px;}
+  .section-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .tag-pill{font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; padding:4px 11px; border-radius:20px;}
+  .tag-pill.done{background:var(--green-bg); color:var(--green);}
+  .tag-pill.today{background:var(--blue-light); color:var(--blue);}
+  .tag-pill.new{background:var(--red-bg); color:var(--red);}
+  .section-head h2{font-size:22px; font-weight:800; margin:0; color:var(--ink);}
+  .section-sub{font-size:13.5px; color:var(--ink-soft); margin:0 0 22px;}
+
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:8px;
+    padding:20px 22px; margin-bottom:12px; border-top:3px solid var(--green);
+  }
+  .card.today{border-top-color:var(--blue);}
+  .card.new{border-top-color:var(--red);}
+  .card-top{display:flex; justify-content:space-between; gap:14px; margin-bottom:7px;}
+  .card h3{font-size:15.5px; font-weight:700; margin:0; line-height:1.35; color:var(--ink);}
+  .badge{flex-shrink:0; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
+  .badge.g{background:var(--green); color:#fff;}
+  .badge.a{background:var(--blue); color:#fff;}
+  .badge.r{background:var(--red); color:#fff;}
+  .card p{font-size:13.8px; line-height:1.6; margin:0 0 10px; color:var(--ink-soft);}
+  .fine{font-size:12.5px; color:#5A6478; background:var(--offwhite); border:1px solid var(--line); border-radius:6px; padding:9px 12px; line-height:1.55;}
+  .fine b{color:var(--ink);}
+
+  /* ---------- NEW SCOPE CARDS ---------- */
+  .num{
+    font-family:'Archivo',sans-serif; font-weight:800; font-size:13px; color:var(--red);
+    background:var(--red-bg); width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .new-card-head{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+  .new-card-head h3{font-size:16.5px;}
+  .req-list{margin:0 0 14px; padding-left:18px; font-size:13px; color:var(--ink-soft); line-height:1.7;}
+  .spec-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  .spec{
+    flex:1; min-width:150px; background:var(--offwhite); border:1px solid var(--line); border-radius:6px;
+    padding:10px 13px;
+  }
+  .spec .k{font-size:10.5px; text-transform:uppercase; letter-spacing:0.4px; color:var(--ink-soft); margin-bottom:3px;}
+  .spec .v{font-size:15px; font-weight:700; color:var(--ink);}
+  .spec.price .v{color:var(--red);}
+
+  .intro-note{font-size:13.8px; color:var(--ink-soft); line-height:1.65; margin-bottom:22px;}
+
+  /* ---------- TOTAL TABLE ---------- */
+  .total-box{
+    background:var(--navy); color:var(--white); border-radius:8px; padding:24px 26px; margin-top:18px;
+  }
+  .total-row{display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.14); font-size:13.5px;}
+  .total-row:last-of-type{border-bottom:none;}
+  .total-row span:first-child{color:#C7D6EA;}
+  .total-row span:last-child{font-weight:700;}
+  .total-row.grand span:first-child{color:var(--white); font-weight:700; font-size:15px;}
+  .total-row.grand span:last-child{color:#7EC1F5; font-size:19px; font-weight:800;}
+  .total-note{font-size:12px; color:#9DB5D4; margin-top:12px; line-height:1.6;}
+
+  footer{background:var(--navy); color:#9DB5D4; text-align:center; padding:26px 0; font-size:11.5px; letter-spacing:0.3px;}
+  footer b{color:#fff;}
+
+  @media (max-width:600px){
+    .spec-row{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">AR</div>
+      <div class="brand-text">
+        <div class="name">AR SOFTWARE LAB</div>
+        <div class="tag">Conecta. Integra. Automatiza.</div>
+      </div>
+    </div>
+
+    <h1>Estado de requerimientos</h1>
+    <div class="subline">THOR TRAINING APP · CORTE: 8 DE JULIO DE 2026</div>
+
+    <div class="progress-block">
+      <div class="progress-top">
+        <span class="pct">78%</span>
+        <span class="lbl">del listado de bugs y ajustes en curso</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill"></div></div>
+      <div class="legend">
+        <span class="item"><span class="dot g"></span>Resuelto: 7</span>
+        <span class="item"><span class="dot a"></span>En desarrollo hoy: 2</span>
+        <span class="item"><span class="dot r"></span>Nuevo alcance: 2 (propuesta aparte)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- ================= RESUELTO ================= -->
+    <section id="listo">
+      <div class="section-head">
+        <span class="tag-pill done">Resuelto</span>
+        <h2>Ya quedó listo</h2>
+      </div>
+      <p class="section-sub">Verificado en esta sesión — 7 de 7 ítems de la lista original</p>
+
+      <div class="card">
+        <div class="card-top"><h3>Documentos duplicados en el perfil del entrenador</h3><div class="badge g">✓</div></div>
+        <p>Ya no aparece la sección "Mis Documentos" repetida en Horario ni en ningún otro ítem del perfil.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Fecha de vinculación guardaba el año incorrecto</h3><div class="badge g">✓</div></div>
+        <p>Al registrar o editar la fecha de vinculación, ya queda el año correcto.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Mensajes falsos de "enviado"</h3><div class="badge g">✓</div></div>
+        <p>Notificar, Notificar a todos y Recordatorio de contrato ahora confirman el envío real por WhatsApp/correo, y avisan si algo falla.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Bóveda de contraseñas — títulos editables</h3><div class="badge g">✓</div></div>
+        <p>Ya se puede editar, añadir o borrar el título de cada credencial guardada (ej. "EPS SURA").</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Aforo en tiempo real</h3><div class="badge g">✓</div></div>
+        <p>El indicador ahora muestra personas actualmente en el gimnasio, no el total acumulado de ingresos del día.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Aviso de membresía en el ingreso facial</h3><div class="badge g">✓</div></div>
+        <p>Al ingresar por reconocimiento facial, recepción ve si la membresía de esa persona está activa o inactiva.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Evaluaciones ocultas para personal por prestación de servicios</h3><div class="badge g">✓</div></div>
+        <p>Solo el personal vinculado tiene acceso de solo lectura a las evaluaciones de los usuarios. Prestación de servicios ya no las ve, ni la carpeta duplicada de seguridad social.</p>
+      </div>
+    </section>
+
+    <!-- ================= HOY ================= -->
+    <section id="hoy">
+      <div class="section-head">
+        <span class="tag-pill today">En desarrollo hoy</span>
+        <h2>Se resuelve hoy</h2>
+      </div>
+      <p class="section-sub">Corrección de errores — incluida en el mantenimiento, sin costo adicional</p>
+
+      <div class="card today">
+        <div class="card-top"><h3>Clases no se guardan en días específicos</h3><div class="badge a">●</div></div>
+        <p>El cronograma de clases no permite programar ni guardar clases de semanas pasadas o de ciertos días puntuales.</p>
+      </div>
+
+      <div class="card today">
+        <div class="card-top"><h3>Información de usuarios visible solo para vinculados y recepción</h3><div class="badge a">●</div></div>
+        <p>Personal por prestación de servicios no debe ver ningún dato de los usuarios, más allá de lo ya resuelto en evaluaciones.</p>
+        <div class="fine"><b>Necesitamos que confirmes:</b> a qué pantalla exacta te refieres (¿listado de miembros?, ¿búsqueda?, ¿otra?) para cerrarla hoy sin dejar huecos.</div>
+      </div>
+    </section>
+
+    <!-- ================= NUEVO ALCANCE ================= -->
+    <section id="nuevo">
+      <div class="section-head">
+        <span class="tag-pill new">Nuevo alcance</span>
+        <h2>Funcionalidad nueva</h2>
+      </div>
+      <p class="intro-note">Estos dos puntos no estaban contemplados en el desarrollo original de la plataforma. Requieren su propio diseño, tiempo y presupuesto — igual que ocurrió con el módulo financiero (Fase 2). Aquí el detalle exacto de cada uno, para que quede todo por escrito y sin lugar a dudas.</p>
+
+      <div class="card new">
+        <div class="new-card-head">
+          <span class="num">01</span>
+          <h3>Cronograma general multi-rol</h3>
+        </div>
+        <p>Un calendario compartido para todo el personal (vinculados, prestación de servicios, recepción, administración y colaboradores externos), donde cada evento se dirige a personas o roles específicos y solo lo ve quien fue invitado — mientras que recepción y administración ven absolutamente todo.</p>
+        <ul class="req-list">
+          <li>Modelo de datos nuevo para eventos con múltiples destinatarios</li>
+          <li>Reglas de seguridad por rol y por persona individual</li>
+          <li>Notificación dirigida por cada evento</li>
+          <li>Vista de calendario mensual interactiva con filtros por audiencia</li>
+        </ul>
+        <div class="spec-row">
+          <div class="spec"><div class="k">Tiempo</div><div class="v">10 días hábiles</div></div>
+          <div class="spec"><div class="k">Entrega estimada</div><div class="v">22 de julio</div></div>
+          <div class="spec price"><div class="k">Inversión</div><div class="v">$350.000</div></div>
+        </div>
+      </div>
+
+      <div class="card new">
+        <div class="new-card-head">
+          <span class="num">02</span>
+          <h3>Nuevo tipo de perfil: colaborador externo</h3>
+        </div>
+        <p>El caso de Yuleima (SST) no es un ajuste al perfil de entrenador o recepción — es un tercer tipo de perfil que no existe hoy en el sistema, con su propio set de permisos: cuenta de cobro, solicitudes, sus propios documentos, notificaciones, calendario, y una carpeta de documentos legales donde pueda anexar archivos que le llegan de terceros.</p>
+        <ul class="req-list">
+          <li>Rol nuevo en la base de datos, independiente del de entrenador</li>
+          <li>Reglas de acceso propias, construidas desde cero</li>
+          <li>Interfaz de perfil distinta a las dos que ya existen</li>
+          <li>Diseñado para reutilizarse con futuros colaboradores externos (contadora, abogado, etc.)</li>
+        </ul>
+        <div class="spec-row">
+          <div class="spec"><div class="k">Tiempo</div><div class="v">5 días hábiles</div></div>
+          <div class="spec"><div class="k">Entrega estimada</div><div class="v">29 de julio</div></div>
+          <div class="spec price"><div class="k">Inversión</div><div class="v">$200.000</div></div>
+        </div>
+      </div>
+
+      <div class="total-box">
+        <div class="total-row"><span>Cronograma general multi-rol</span><span>$350.000</span></div>
+        <div class="total-row"><span>Perfil de colaborador externo</span><span>$200.000</span></div>
+        <div class="total-row grand"><span>TOTAL NUEVO ALCANCE</span><span>$550.000</span></div>
+        <div class="total-note">
+          Forma de pago: 50% al iniciar ($275.000) y 50% contra entrega ($275.000), igual que en la Fase 1 y Fase 2.<br>
+          Tiempos contados en días hábiles, trabajados de forma secuencial a partir de tu aprobación (9 de julio) — entrega total estimada: <b>29 de julio de 2026</b>. Este plazo asume que no se agregan solicitudes nuevas a mitad de camino; si surge algo adicional durante el desarrollo, se cotiza aparte y el plazo se ajusta.<br>
+          La mensualidad de infraestructura vigente ($70.000/mes) no cambia.
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <b>AR Software Lab</b> · Conecta. Integra. Automatiza. · Generado el 8 de julio de 2026
+</footer>
+
+</body>
+</html>
