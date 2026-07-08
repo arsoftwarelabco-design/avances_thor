@@ -83,7 +83,7 @@
   .card.today{border-top-color:var(--blue);}
   .card.new{border-top-color:var(--red);}
   .card-top{display:flex; justify-content:space-between; gap:14px; margin-bottom:7px;}
-  .card h3{font-size:15.5px; font-weight:700; margin:0; line-height:1.35; color:var(--ink);}
+  .card h3{font-size:15.5px; font-weight:700; margin:0; line-height:1.35; color:var(--ink); flex:1; min-width:0;}
   .badge{flex-shrink:0; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;}
   .badge.g{background:var(--green); color:#fff;}
   .badge.a{background:var(--blue); color:#fff;}
@@ -99,7 +99,7 @@
     display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
   .new-card-head{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
-  .new-card-head h3{font-size:16.5px;}
+  .new-card-head h3{font-size:16.5px; flex:1; min-width:0;}
   .req-list{margin:0 0 14px; padding-left:18px; font-size:13px; color:var(--ink-soft); line-height:1.7;}
   .spec-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
   .spec{
@@ -128,7 +128,19 @@
   footer b{color:#fff;}
 
   @media (max-width:600px){
+    .wrap{padding:0 16px;}
+    header{padding:36px 0 32px;}
+    .brand{margin-bottom:26px;}
+    h1{margin-bottom:6px;}
+    .subline{margin-bottom:24px;}
+    .progress-block{padding:16px 16px;}
+    .progress-top{flex-direction:column; align-items:flex-start; gap:2px;}
+    .legend{gap:14px 18px;}
+    main{padding:32px 0 60px;}
+    section{margin-bottom:40px;}
+    .card{padding:16px 16px;}
     .spec-row{flex-direction:column;}
+    .total-box{padding:18px 16px;}
   }
 </style>
 </head>
@@ -235,7 +247,7 @@
         <span class="tag-pill new">Nuevo alcance</span>
         <h2>Funcionalidad nueva</h2>
       </div>
-      <p class="intro-note">Estos dos puntos no estaban contemplados en el desarrollo original de la plataforma. Requieren su propio diseño, tiempo y presupuesto — igual que ocurrió con el módulo financiero (Fase 2). Aquí el detalle exacto de cada uno, para que quede todo por escrito y sin lugar a dudas.</p>
+      <p class="intro-note">Estos dos puntos no estaban contemplados en el desarrollo original de la plataforma. A diferencia de una corrección o un ajuste visual, cada uno implica construir desde cero una nueva estructura de datos, nuevas reglas de seguridad de la información y una interfaz propia. Por su nivel de profundidad, requieren un tiempo de diseño, desarrollo y pruebas independiente, con su propio alcance y presupuesto.</p>
 
       <div class="card new">
         <div class="new-card-head">
@@ -249,6 +261,7 @@
           <li>Notificación dirigida por cada evento</li>
           <li>Vista de calendario mensual interactiva con filtros por audiencia</li>
         </ul>
+        <div class="fine"><b>Por qué requiere este tiempo:</b> hoy el sistema no distingue audiencias por evento. Diseñar un modelo de permisos nuevo, donde cada persona vea únicamente lo que le corresponde, sin afectar el cronograma de clases que ya está en producción, implica un desarrollo completo desde la base de datos hasta la interfaz.</div>
         <div class="spec-row">
           <div class="spec"><div class="k">Tiempo</div><div class="v">10 días hábiles</div></div>
           <div class="spec"><div class="k">Entrega estimada</div><div class="v">22 de julio</div></div>
@@ -261,13 +274,14 @@
           <span class="num">02</span>
           <h3>Nuevo tipo de perfil: colaborador externo</h3>
         </div>
-        <p>El caso de Yuleima (SST) no es un ajuste al perfil de entrenador o recepción — es un tercer tipo de perfil que no existe hoy en el sistema, con su propio set de permisos: cuenta de cobro, solicitudes, sus propios documentos, notificaciones, calendario, y una carpeta de documentos legales donde pueda anexar archivos que le llegan de terceros.</p>
+        <p>El caso de Yuleima (SST) no es un ajuste al perfil de entrenador o recepción — es un cuarto tipo de perfil que no existe hoy en el sistema, con su propio set de permisos: cuenta de cobro, solicitudes, sus propios documentos, notificaciones, calendario, y una carpeta de documentos legales donde pueda anexar archivos que le llegan de terceros.</p>
         <ul class="req-list">
           <li>Rol nuevo en la base de datos, independiente del de entrenador</li>
           <li>Reglas de acceso propias, construidas desde cero</li>
           <li>Interfaz de perfil distinta a las dos que ya existen</li>
           <li>Diseñado para reutilizarse con futuros colaboradores externos (contadora, abogado, etc.)</li>
         </ul>
+        <div class="fine"><b>Por qué requiere este tiempo:</b> el sistema hoy solo reconoce tres tipos de perfil (entrenador, usuario y recepción/administración). Crear un cuarto implica definir sus reglas de acceso desde cero y construir una interfaz propia, sin heredar comportamientos que no le correspondan.</div>
         <div class="spec-row">
           <div class="spec"><div class="k">Tiempo</div><div class="v">5 días hábiles</div></div>
           <div class="spec"><div class="k">Entrega estimada</div><div class="v">29 de julio</div></div>
@@ -280,7 +294,7 @@
         <div class="total-row"><span>Perfil de colaborador externo</span><span>$200.000</span></div>
         <div class="total-row grand"><span>TOTAL NUEVO ALCANCE</span><span>$550.000</span></div>
         <div class="total-note">
-          Forma de pago: 50% al iniciar ($275.000) y 50% contra entrega ($275.000), igual que en la Fase 1 y Fase 2.<br>
+          Forma de pago: 50% al iniciar ($275.000) y 50% contra entrega ($275.000), como es habitual en los desarrollos anteriores.<br>
           Tiempos contados en días hábiles, trabajados de forma secuencial a partir de tu aprobación (9 de julio) — entrega total estimada: <b>29 de julio de 2026</b>. Este plazo asume que no se agregan solicitudes nuevas a mitad de camino; si surge algo adicional durante el desarrollo, se cotiza aparte y el plazo se ajusta.<br>
           La mensualidad de infraestructura vigente ($70.000/mes) no cambia.
         </div>
