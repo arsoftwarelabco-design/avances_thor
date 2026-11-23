@@ -91,7 +91,7 @@
 
   /* ---------- GANTT ---------- */
   .gantt-scroll{overflow-x:auto; background:var(--white); border:1px solid var(--line); border-radius:8px; -webkit-overflow-scrolling:touch;}
-  .gantt{--label:250px; display:grid; grid-template-columns:var(--label) repeat(15, minmax(38px,1fr)); min-width:820px; font-size:12.5px;}
+  .gantt{--label:250px; display:grid; grid-template-columns:var(--label) repeat(20, minmax(34px,1fr)); min-width:980px; font-size:12.5px;}
   .g-cell{border-bottom:1px solid var(--line); border-left:1px solid #EEF2F6; min-height:40px; position:relative;}
   .g-cell.wk-start{border-left:1px solid #CBD5E1;}
   .g-cell.hol{background:repeating-linear-gradient(135deg,#F4F6F8 0 6px,#E9EDF2 6px 12px);}
@@ -168,6 +168,14 @@
   .status{display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; white-space:nowrap;}
   .status.ok{background:var(--green-bg); color:var(--green);}
   .status.tbd{background:var(--offwhite); color:var(--ink-soft); border:1px solid var(--line);}
+  .status.done{background:var(--blue-light); color:var(--blue);}
+  .status.qa{background:var(--amber-bg); color:var(--amber);}
+  .mini{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); border-radius:8px; overflow:hidden; font-size:13.5px; margin-bottom:12px;}
+  .mini td{padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.5;}
+  .mini tr:last-child td{border-bottom:none;}
+  .mini td:last-child{text-align:right; white-space:nowrap;}
+  .card ul{margin:0 0 10px; padding-left:18px; font-size:13.8px; line-height:1.6; color:var(--ink-soft);}
+  .card ul li{margin-bottom:2px;}
 
   footer{background:var(--navy); color:#9DB5D4; text-align:center; padding:26px 0; font-size:11.5px; letter-spacing:0.3px;}
   footer b{color:#fff;}
@@ -193,14 +201,13 @@
     section{margin-bottom:40px;}
     .card{padding:16px 16px;}
     .spec-row{flex-direction:column;}
-    .gantt{--label:160px; min-width:700px; font-size:11.5px;}
+    .gantt{--label:170px; min-width:860px; font-size:11.5px;}
     .g-label{padding:8px 10px;}
     .meet-table{font-size:12.8px;}
     .meet-table th, .meet-table td{padding:10px 10px;}
     .meet-table td:first-child{white-space:normal;}
   }
 </style>
-</head>
 <body>
 
 <header>
@@ -214,15 +221,15 @@
     </div>
 
     <h1>Cronograma de trabajo</h1>
-    <div class="subline">THOR TRAINING APP · ACORDADO EN REUNIÓN DEL 3 DE NOVIEMBRE DE 2026</div>
+    <div class="subline">THOR TRAINING APP · ACTUALIZADO TRAS LA REUNIÓN DEL 19 DE NOVIEMBRE DE 2026</div>
 
     <div class="next-block">
-      <div class="k">Próxima reunión de seguimiento</div>
-      <div class="v">Martes 17 de noviembre · 2:00 p.m.</div>
+      <div class="k">Próxima reunión: revisión de avances del agente digital</div>
+      <div class="v">Jueves 3 de diciembre · en la mañana</div>
       <div class="legend">
-        <span class="item"><span class="dot a"></span>Correcciones: 4</span>
-        <span class="item"><span class="dot m"></span>Nuevas solicitudes: 2</span>
-        <span class="item"><span class="dot r"></span>Propuesta para revisar: 1</span>
+        <span class="item"><span class="dot a"></span>Pendientes del ciclo anterior: 4</span>
+        <span class="item"><span class="dot m"></span>Solicitudes del 19 de noviembre: 4</span>
+        <span class="item"><span class="dot r"></span>Agente digital y CRM</span>
       </div>
     </div>
   </div>
@@ -234,39 +241,39 @@
     <!-- ================= ORDEN DE EJECUCIÓN ================= -->
     <section id="orden">
       <div class="section-head"><h2>Orden de ejecución</h2></div>
-      <p class="section-sub">Primero se corrige lo que falla en la plataforma; después se trabajan las solicitudes nuevas. Cada entrega se prueba antes de pasar a la siguiente.</p>
+      <p class="section-sub">Primero se cierra lo pendiente y se entregan los datos reales del dashboard. En paralelo se desarrolla el agente digital, que se revisa el 3 de diciembre y entra en pruebas antes de salir en vivo.</p>
 
       <div class="timeline">
         <div class="step s1">
           <div class="node">1</div>
           <div class="box">
-            <div class="when">3 al 6 de nov</div>
-            <div class="what">Correcciones reportadas</div>
-            <div class="detail">Cierre de caja, reservas de recepción, documentos de trabajadores y reservas visibles para profesores.</div>
+            <div class="when">23 al 27 de nov</div>
+            <div class="what">Pendientes y datos reales</div>
+            <div class="detail">Comprobante de pago por WhatsApp, dashboard con datos reales, informe mensual descargable y datáfono.</div>
           </div>
         </div>
         <div class="step s2">
           <div class="node">2</div>
           <div class="box">
-            <div class="when">9 al 13 de nov</div>
-            <div class="what">Nuevas solicitudes</div>
-            <div class="detail">Asistencia de profesores desde recepción y cuenta de cobro desde Solicitudes.</div>
+            <div class="when">23 de nov al 3 de dic</div>
+            <div class="what">Desarrollo del agente digital</div>
+            <div class="detail">Conexión del número, información base, agente, CRM y bandeja de conversaciones.</div>
           </div>
         </div>
         <div class="step s3">
           <div class="node">3</div>
           <div class="box">
-            <div class="when">Mar 17 de nov · 2:00 p.m.</div>
-            <div class="what">Reunión de seguimiento</div>
-            <div class="detail">Informe de lo realizado y propuesta del agente digital y CRM.</div>
+            <div class="when">Jue 3 de dic · mañana</div>
+            <div class="what">Revisión de avances</div>
+            <div class="detail">Se revisa el agente funcionando entre los tres y se definen los ajustes.</div>
           </div>
         </div>
         <div class="step s4">
           <div class="node">4</div>
           <div class="box">
-            <div class="when">Mar 1 de dic</div>
-            <div class="what">Siguiente seguimiento</div>
-            <div class="detail">Cada 15 días. Fecha por confirmar.</div>
+            <div class="when">4 al 18 de dic</div>
+            <div class="what">Pruebas, ajustes y salida en vivo</div>
+            <div class="detail">Pruebas con el equipo del gimnasio, mensajes automáticos y salida en vivo antes de la pauta de enero.</div>
           </div>
         </div>
       </div>
@@ -275,19 +282,19 @@
     <!-- ================= GANTT ================= -->
     <section id="gantt">
       <div class="section-head"><h2>Diagrama de Gantt</h2></div>
-      <p class="section-sub">Días hábiles del 2 al 20 de noviembre de 2026.</p>
+      <p class="section-sub">Días hábiles del 23 de noviembre al 18 de diciembre de 2026.</p>
 
       <div class="gantt-scroll">
         <div class="gantt" id="gantt-grid" role="table" aria-label="Diagrama de Gantt del cronograma de trabajo"></div>
       </div>
       <div class="g-legend">
-        <span><i class="c-fix"></i>Correcciones</span>
-        <span><i class="c-req"></i>Nuevas solicitudes</span>
-        <span><i class="ms c-new"></i>Propuesta</span>
-        <span><i class="ms c-meet"></i>Reunión de seguimiento</span>
+        <span><i class="c-fix"></i>Pendientes del ciclo anterior</span>
+        <span><i class="c-req"></i>Solicitudes del 19 de noviembre</span>
+        <span><i class="c-new"></i>Agente digital y CRM</span>
+        <span><i class="ms c-meet"></i>Reunión o hito</span>
         <span><i class="hol"></i>Festivo</span>
       </div>
-      <p class="g-note">Siguientes reuniones de seguimiento (por confirmar): martes 1 y martes 15 de diciembre, 2:00 p.m.</p>
+      <p class="g-note">El agente digital empieza con la información base del gimnasio y la aprobación de la propuesta. Si alguna de las dos se demora, las fechas del agente se corren lo mismo.</p>
     </section>
 
     <!-- ================= FORMA DE TRABAJO ================= -->
@@ -305,83 +312,121 @@
         </div>
         <div class="rule">
           <h3>Seguimiento cada 15 días</h3>
-          <p>Reunión corta, martes a las 2:00 p.m., para revisar lo realizado, lo pendiente y lo que haya surgido.</p>
+          <p>Reunión corta para revisar lo realizado, lo pendiente y lo que haya surgido. La fecha de la siguiente se acuerda en cada reunión.</p>
         </div>
         <div class="rule">
-          <h3>Informe en cada reunión</h3>
-          <p>Qué se hizo, qué se encontró, cómo se resolvió y qué queda pendiente.</p>
+          <h3>Aviso de cada entrega</h3>
+          <p>Cuando algo queda publicado, se le avisa a Santiago, para que el equipo sepa que ya funciona y no lo haga a mano.</p>
         </div>
       </div>
     </section>
 
-    <!-- ================= SEMANA 1 ================= -->
-    <section id="correcciones">
+    <!-- ================= CICLO ANTERIOR ================= -->
+    <section id="pendientes">
       <div class="section-head">
-        <span class="tag-pill fix">Semana 1 · 3 al 6 de noviembre</span>
-        <h2>Correcciones reportadas</h2>
+        <span class="tag-pill fix">24 al 27 de noviembre</span>
+        <h2>Pendientes del ciclo anterior</h2>
       </div>
-      <p class="section-sub">Errores en funciones que ya existen. Son la prioridad de esta semana y están incluidos en el mantenimiento, sin costo adicional.</p>
+      <p class="section-sub">Las 6 entregas del cronograma del 3 de noviembre se publicaron el 18 de noviembre. Estas solicitudes, recibidas para el siguiente ciclo, se publican esta semana.</p>
 
-      <div class="card">
-        <div class="card-top"><span class="num">01</span><h3>Error en el cierre de caja</h3></div>
-        <p>En ocasiones el sistema muestra un error al cerrar caja, aunque toda la información esté bien digitada.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-top"><span class="num">02</span><h3>Reservas hechas por recepción quedan como cortesía</h3></div>
-        <p>Cuando recepción reserva una clase para un socio desde Horarios, la reserva no queda en el perfil del socio sino registrada como clase de cortesía.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-top"><span class="num">03</span><h3>Varios documentos por trabajador</h3></div>
-        <p>Hoy solo se puede cargar un documento por trabajador, lo que impide registrar su documentación completa.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-top"><span class="num">04</span><h3>Profesores ven sus reservas desde el día anterior</h3></div>
-        <p>Hoy los profesores solo ven quién agendó su clase el mismo día. En las clases muy temprano no pueden revisarlo con anticipación.</p>
-      </div>
+      <table class="mini">
+        <tbody>
+          <tr><td><b>01</b> · Envío automático del comprobante de pago de la mensualidad por WhatsApp</td><td><span class="status tbd">Programado</span></td></tr>
+          <tr><td><b>02</b> · Mensualidades de 28 días, para las que se vendan desde la publicación</td><td><span class="status tbd">Programado</span></td></tr>
+          <tr><td><b>03</b> · Mostrar en Financiero a qué persona se le vendió cada mensualidad</td><td><span class="status tbd">Programado</span></td></tr>
+          <tr><td><b>04</b> · Crear carpetas en el perfil del personal</td><td><span class="status tbd">En revisión</span></td></tr>
+        </tbody>
+      </table>
+      <div class="fine"><b>Por definir:</b> editar el método de pago de un registro ya guardado (por ejemplo, de efectivo a transferencia). Falta acordar quién puede hacerlo y cómo se refleja en una caja ya cerrada.</div>
     </section>
 
-    <!-- ================= SEMANA 2 ================= -->
+    <!-- ================= SOLICITUDES 19 NOV ================= -->
     <section id="solicitudes">
       <div class="section-head">
-        <span class="tag-pill req">Semana 2 · 9 al 13 de noviembre</span>
-        <h2>Nuevas solicitudes</h2>
+        <span class="tag-pill req">23 al 25 de noviembre</span>
+        <h2>Solicitudes del 19 de noviembre</h2>
       </div>
-      <p class="section-sub">Solicitadas en la reunión del 3 de noviembre. Se presentan funcionando en la reunión del 17.</p>
+      <p class="section-sub">Datos confiables para el control del gimnasio, para la contadora y para los mensajes del agente digital.</p>
 
       <div class="card req">
-        <div class="card-top"><span class="num">05</span><h3>Asistencia de profesores desde recepción</h3></div>
-        <p>Desde el perfil de cada profesor, recepción marca la entrada y la salida del día. Sirve para validar las cuentas de cobro de los profesores externos y como soporte de horarios, reemplazos y horas extra para la nómina.</p>
-        <div class="fine"><b>Primera versión manual.</b> El registro de ingreso marca la entrada pero no siempre la salida, por eso se registra desde recepción. A futuro se puede conectar con el torniquete y el ingreso facial.</div>
-        <div class="spec-row">
-          <div class="spec"><div class="k">Revisión</div><div class="v">17 de noviembre</div></div>
-        </div>
+        <div class="card-top"><span class="num">05</span><h3>Dashboard con datos reales</h3></div>
+        <p>Hoy el dashboard no refleja la información real. Se actualiza para mostrar, sin personas repetidas:</p>
+        <ul>
+          <li>socios activos e inactivos;</li>
+          <li>socios activos que llevan varios días sin asistir, con la lista de quiénes son;</li>
+          <li>membresías por vencer.</li>
+        </ul>
+        <div class="fine"><b>Asistencia:</b> los días sin asistir se calculan con el registro de ingreso por huella.</div>
       </div>
 
       <div class="card req">
-        <div class="card-top"><span class="num">06</span><h3>Cuenta de cobro desde Solicitudes</h3></div>
-        <p>Agregar "Cuenta de cobro" como tipo de solicitud, para que el sistema la registre como cuenta de cobro y se pueda responder con el comprobante de pago.</p>
-        <div class="fine"><b>Por qué:</b> hoy algunos profesores envían la cuenta de cobro como "Otro" en Solicitudes, y esa opción no permite adjuntar el comprobante de pago al responder.</div>
+        <div class="card-top"><span class="num">06</span><h3>Informe mensual descargable</h3></div>
+        <p>Se elige el mes y se descarga en un archivo que abre en Excel:</p>
+        <ul>
+          <li>inscritos nuevos y renovaciones;</li>
+          <li>socios inasistentes y deserciones;</li>
+          <li>cortesías y cuántas se convirtieron en socios;</li>
+          <li>ingresos por método de pago y egresos;</li>
+          <li>variación de cada dato frente al mes anterior.</li>
+        </ul>
+        <div class="fine"><b>Ingresos y egresos:</b> solo los ven los perfiles que hoy tienen acceso a Financiero.</div>
+      </div>
+
+      <div class="card req">
+        <div class="card-top"><span class="num">07</span><h3>Datáfono como método de pago</h3></div>
+        <p>Se agrega "Datáfono" junto a efectivo y transferencia en los registros de pago, en la caja y en Financiero. En el cierre de turno se muestra aparte y no se suma al efectivo.</p>
+      </div>
+
+      <div class="card req">
+        <div class="card-top"><span class="num">08</span><h3>Revisar la conexión automática de pagos</h3></div>
+        <p>Se revisa si los pagos con datáfono y por transferencia bancaria pueden reflejarse en la plataforma de forma automática. Mientras tanto, se registran a mano.</p>
         <div class="spec-row">
-          <div class="spec"><div class="k">Revisión</div><div class="v">17 de noviembre</div></div>
+          <div class="spec"><div class="k">Respuesta</div><div class="v">3 de diciembre</div></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= PROPUESTA ================= -->
-    <section id="propuesta">
+    <!-- ================= AGENTE ================= -->
+    <section id="agente">
       <div class="section-head">
-        <span class="tag-pill new">Para revisar el 17 de noviembre</span>
-        <h2>Propuesta: agente digital y CRM</h2>
+        <span class="tag-pill new">23 de noviembre al 18 de diciembre</span>
+        <h2>Agente digital en WhatsApp y CRM</h2>
       </div>
-      <p class="section-sub">No se desarrolla en este ciclo. Se presenta la propuesta en la reunión de seguimiento.</p>
+      <p class="section-sub">Atiende en el mismo número de recepción, para que cada conversación siga en un solo chat. El número de notificaciones de la plataforma queda solo para avisos automáticos.</p>
 
       <div class="card new">
-        <div class="card-top"><span class="num">07</span><h3>Agente digital en WhatsApp y CRM</h3></div>
-        <p>Un asistente conectado al WhatsApp del gimnasio que responda las preguntas frecuentes (horarios, clases), agende clases y cortesías, atienda también los fines de semana y pase la conversación a una persona cuando haga falta. Pensado para recibir el volumen de mensajes de la pauta.</p>
-        <div class="fine"><b>Base existente:</b> el gimnasio ya cuenta con WhatsApp de Meta.</div>
+        <div class="card-top"><span class="num">09</span><h3>Desarrollo · 23 de noviembre al 3 de diciembre</h3></div>
+        <ul>
+          <li><b>Conexión del número y carga de la información base:</b> planes, precios, política de cortesías y preguntas frecuentes.</li>
+          <li><b>Reconoce a cada persona por su número:</b> si ya es socio, la saluda por su nombre y no le pide datos.</li>
+          <li><b>Responde preguntas frecuentes</b> con la información real de horarios y clases.</li>
+          <li><b>Agenda clases de cortesía y reservas de socios</b>, respetando los cupos.</li>
+          <li><b>Pasa la conversación a una persona</b> dentro del mismo chat cuando no tiene la respuesta.</li>
+          <li><b>Responde solo temas del gimnasio</b>, para proteger la información.</li>
+          <li><b>CRM de prospectos y bandeja de conversaciones</b> en la plataforma.</li>
+          <li><b>Registro de los mensajes automáticos:</b> el equipo ve qué se le envió a cada persona y se evitan mensajes repetidos.</li>
+        </ul>
+      </div>
+
+      <div class="card new">
+        <div class="card-top"><span class="num">10</span><h3>Mensajes automáticos de seguimiento · desde el 4 de diciembre</h3></div>
+        <ul>
+          <li>Recordatorio de la clase de cortesía el día anterior.</li>
+          <li>Seguimiento a quien escribió y no agendó la cortesía.</li>
+          <li>Seguimiento a quien vino a la cortesía y no se inscribió.</li>
+          <li>Bienvenida y comprobante a quien se inscribe.</li>
+          <li>Cumpleaños.</li>
+          <li>Socios que llevan varios días sin asistir.</li>
+          <li>Aviso de vencimiento 2 días antes.</li>
+          <li>Seguimiento al cumplir el primer mes.</li>
+        </ul>
+        <div class="fine"><b>Plantillas de Meta:</b> cada mensaje que el gimnasio envía primero debe usar una plantilla aprobada por Meta. Se someten a aprobación apenas quede conectado el número.</div>
+      </div>
+
+      <div class="card new">
+        <div class="card-top"><span class="num">11</span><h3>Pruebas y salida en vivo · 4 al 18 de diciembre</h3></div>
+        <p>El equipo del gimnasio prueba el agente con casos reales, se ajustan respuestas y flujos, y sale en vivo antes de la pauta de enero.</p>
+        <div class="fine"><b>Lo que se necesita del gimnasio para arrancar:</b> la información base, la persona que atenderá la bandeja de conversaciones y la persona que validará las respuestas durante las pruebas.</div>
       </div>
     </section>
 
@@ -391,13 +436,13 @@
         <span class="tag-pill meet">Seguimiento</span>
         <h2>Reuniones</h2>
       </div>
-      <p class="section-sub">Cada 15 días, los martes a las 2:00 p.m.</p>
+      <p class="section-sub">Cada 15 días. La fecha de la siguiente se acuerda en cada reunión.</p>
       <table class="meet-table">
         <thead><tr><th>Fecha</th><th>Qué se revisa</th><th>Estado</th></tr></thead>
         <tbody>
-          <tr><td>Mar 17 de nov · 2:00 p.m.</td><td>Informe de correcciones y nuevas solicitudes. Propuesta del agente digital y CRM. Solicitudes que hayan surgido.</td><td><span class="status ok">Confirmada</span></td></tr>
-          <tr><td>Mar 1 de dic · 2:00 p.m.</td><td>Seguimiento quincenal.</td><td><span class="status tbd">Por confirmar</span></td></tr>
-          <tr><td>Mar 15 de dic · 2:00 p.m.</td><td>Seguimiento quincenal.</td><td><span class="status tbd">Por confirmar</span></td></tr>
+          <tr><td>Jue 19 de nov</td><td>Informe del ciclo del 3 de noviembre. Propuesta del agente digital y CRM: aprobada para iniciar. Nuevas solicitudes: dashboard, informe mensual y datáfono.</td><td><span class="status done">Realizada</span></td></tr>
+          <tr><td>Jue 3 de dic · mañana</td><td>Avances del agente digital y del CRM. Dashboard e informe mensual. Respuesta sobre la conexión automática de pagos.</td><td><span class="status ok">Confirmada</span></td></tr>
+          <tr><td>Por definir</td><td>Cierre de pruebas y salida en vivo del agente digital.</td><td><span class="status tbd">Se acuerda el 3 de dic</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -407,34 +452,44 @@
 
 <script>
 (function(){
-  // Días hábiles mostrados (noviembre 2026). hol = festivo.
+  // Días hábiles mostrados. hol = festivo.
   var days = [
-    {d:2,w:'L',hol:true},{d:3,w:'M'},{d:4,w:'M'},{d:5,w:'J'},{d:6,w:'V'},
-    {d:9,w:'L'},{d:10,w:'M'},{d:11,w:'M'},{d:12,w:'J'},{d:13,w:'V'},
-    {d:16,w:'L',hol:true},{d:17,w:'M'},{d:18,w:'M'},{d:19,w:'J'},{d:20,w:'V'}
+    {k:'n23',d:23,w:'L'},{k:'n24',d:24,w:'M'},{k:'n25',d:25,w:'M'},{k:'n26',d:26,w:'J'},{k:'n27',d:27,w:'V'},
+    {k:'n30',d:30,w:'L'},{k:'d1',d:1,w:'M'},{k:'d2',d:2,w:'M'},{k:'d3',d:3,w:'J'},{k:'d4',d:4,w:'V'},
+    {k:'d7',d:7,w:'L'},{k:'d8',d:8,w:'M',hol:true},{k:'d9',d:9,w:'M'},{k:'d10',d:10,w:'J'},{k:'d11',d:11,w:'V'},
+    {k:'d14',d:14,w:'L'},{k:'d15',d:15,w:'M'},{k:'d16',d:16,w:'M'},{k:'d17',d:17,w:'J'},{k:'d18',d:18,w:'V'}
   ];
-  var weeks = ['Semana 1 · 2–6 nov','Semana 2 · 9–13 nov','Semana 3 · 16–20 nov'];
-  // type: bar (from, to = día del mes, inclusivo) o ms (hito en un día)
+  var weeks = ['Semana 1 · 23–27 nov','Semana 2 · 30 nov–4 dic','Semana 3 · 7–11 dic','Semana 4 · 14–18 dic'];
+  // type: bar (from, to = clave del día, inclusivo) o ms (hito en un día)
   var groups = [
-    {title:'Semana 1 · Correcciones', color:'c-fix', rows:[
-      {n:'01', label:'Error en el cierre de caja', type:'bar', from:3, to:6},
-      {n:'02', label:'Reservas de recepción quedan como cortesía', type:'bar', from:3, to:6},
-      {n:'03', label:'Varios documentos por trabajador', type:'bar', from:3, to:6},
-      {n:'04', label:'Profesores ven reservas desde el día anterior', type:'bar', from:3, to:6}
+    {title:'Pendientes del ciclo anterior', color:'c-fix', rows:[
+      {n:'01', label:'Comprobante de pago por WhatsApp', type:'bar', from:'n24', to:'n27', txt:'24–27 nov'},
+      {n:'02', label:'Mensualidades de 28 días', type:'bar', from:'n24', to:'n27', txt:'24–27 nov'},
+      {n:'03', label:'Comprador de la mensualidad en Financiero', type:'bar', from:'n24', to:'n27', txt:'24–27 nov'},
+      {n:'04', label:'Carpetas en el perfil del personal', type:'bar', from:'n24', to:'n27', txt:'24–27 nov'}
     ]},
-    {title:'Semana 2 · Nuevas solicitudes', color:'c-req', rows:[
-      {n:'05', label:'Asistencia de profesores desde recepción', type:'bar', from:9, to:13},
-      {n:'06', label:'Cuenta de cobro desde Solicitudes', type:'bar', from:9, to:13}
+    {title:'Solicitudes del 19 de noviembre', color:'c-req', rows:[
+      {n:'05', label:'Dashboard con datos reales', type:'bar', from:'n23', to:'n25', txt:'23–25 nov'},
+      {n:'06', label:'Informe mensual descargable', type:'bar', from:'n23', to:'n25', txt:'23–25 nov'},
+      {n:'07', label:'Datáfono como método de pago', type:'bar', from:'n23', to:'n25', txt:'23–25 nov'},
+      {n:'08', label:'Revisar conexión automática de pagos', type:'ms', on:'d3', color:'c-req', tip:'Respuesta el 3 dic'}
     ]},
-    {title:'Revisión', color:'c-meet', rows:[
-      {n:'07', label:'Propuesta agente digital y CRM', type:'ms', on:17, color:'c-new'},
-      {n:'', label:'Reunión de seguimiento · 2:00 p.m.', type:'ms', on:17}
+    {title:'Agente digital y CRM', color:'c-new', rows:[
+      {n:'09', label:'Conexión del número e información base', type:'bar', from:'n23', to:'n27', txt:'23–27 nov'},
+      {n:'09', label:'Agente: preguntas, cortesías, reservas y paso a persona', type:'bar', from:'n23', to:'d3', txt:'23 nov–3 dic'},
+      {n:'09', label:'CRM, bandeja y registro de mensajes', type:'bar', from:'n30', to:'d3', txt:'30 nov–3 dic'},
+      {n:'10', label:'Mensajes automáticos de seguimiento', type:'bar', from:'d4', to:'d11', txt:'4–11 dic'},
+      {n:'11', label:'Pruebas con el equipo y ajustes', type:'bar', from:'d4', to:'d18', txt:'4–18 dic'}
+    ]},
+    {title:'Reuniones e hitos', color:'c-meet', rows:[
+      {n:'', label:'Revisión de avances · jue 3 dic, mañana', type:'ms', on:'d3', tip:'3 dic'},
+      {n:'', label:'Salida en vivo del agente', type:'ms', on:'d18', tip:'18 dic'}
     ]}
   ];
 
   var g = document.getElementById('gantt-grid');
   if(!g) return;
-  function col(day){ for(var i=0;i<days.length;i++){ if(days[i].d===day) return i+2; } return -1; }
+  function col(key){ for(var i=0;i<days.length;i++){ if(days[i].k===key) return i+2; } return -1; }
   function el(cls, html, style){ var e=document.createElement('div'); e.className=cls; if(html!=null) e.innerHTML=html; if(style) e.setAttribute('style',style); g.appendChild(e); return e; }
   var row = 1;
 
@@ -461,9 +516,9 @@
       gridCells(row);
       if(r.type==='bar'){
         var a=col(r.from), b=col(r.to);
-        el('g-bar '+c, r.from+'–'+r.to+' nov', 'grid-row:'+row+';grid-column:'+a+'/'+(b+1));
+        el('g-bar '+c, r.txt, 'grid-row:'+row+';grid-column:'+a+'/'+(b+1)).title = r.txt;
       } else {
-        el('g-ms '+c, null, 'grid-row:'+row+';grid-column:'+col(r.on)).title = r.on+' nov';
+        el('g-ms '+c, null, 'grid-row:'+row+';grid-column:'+col(r.on)).title = r.tip || '';
       }
       row++;
     });
@@ -472,7 +527,7 @@
 </script>
 
 <footer>
-  <b>AR Software Lab</b> · Conecta. Integra. Automatiza. · Generado el 4 de noviembre de 2026
+  <b>AR Software Lab</b> · Conecta. Integra. Automatiza. · Actualizado el 23 de noviembre de 2026
 </footer>
 
 </body>
